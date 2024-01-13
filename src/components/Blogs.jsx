@@ -1,5 +1,6 @@
 import { useDispatch, useSelector } from "react-redux"
 import { deleteBlog, updateBlog } from "../reducers/blogReducer"
+import { showNotification } from '../reducers/notificationReducer'
 
 const Blog = ({blog, handleLikes, handleDelete}) => {
     return (
@@ -26,6 +27,7 @@ const Blogs = () => {
 
   const handleBlog = (blog) => {
     dispatch(deleteBlog(blog.id))
+    dispatch(showNotification(`${blog.title} deleted`, 5))
   }
   return (
     <ul>
